@@ -1,0 +1,34 @@
+2020-05-12 14:56:31.368 -05:00 [INF] Starting host...
+2020-05-12 14:56:32.084 -05:00 [INF] Starting IdentityServer4 version 3.1.3.0
+2020-05-12 14:56:32.095 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-05-12 14:56:32.100 -05:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2020-05-12 14:56:32.100 -05:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2020-05-12 14:56:32.100 -05:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2020-05-12 14:56:32.100 -05:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2020-05-12 14:56:32.100 -05:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2020-05-12 14:56:32.100 -05:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2020-05-12 14:56:32.186 -05:00 [INF] Now listening on: https://localhost:5001
+2020-05-12 14:56:32.187 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-05-12 14:56:32.187 -05:00 [INF] Hosting environment: Development
+2020-05-12 14:56:32.187 -05:00 [INF] Content root path: /Users/home/Code/IdentityServer
+2020-05-12 14:56:34.343 -05:00 [DBG] Login Url: /Account/Login
+2020-05-12 14:56:34.345 -05:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-05-12 14:56:34.345 -05:00 [DBG] Logout Url: /Account/Logout
+2020-05-12 14:56:34.345 -05:00 [DBG] ConsentUrl Url: /consent
+2020-05-12 14:56:34.345 -05:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-05-12 14:56:34.345 -05:00 [DBG] Error Url: /home/error
+2020-05-12 14:56:34.345 -05:00 [DBG] Error Id Parameter: errorId
+2020-05-12 14:56:36.613 -05:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2020-05-12 14:56:36.614 -05:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2020-05-12 14:56:36.614 -05:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-05-12 14:56:36.616 -05:00 [DBG] Start discovery request
+2020-05-12 14:56:41.389 -05:00 [INF] AuthenticationScheme: idsrv was challenged.
+2020-05-12 14:56:46.237 -05:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-05-12 14:56:46.268 -05:00 [DBG] Augmenting SignInContext
+2020-05-12 14:56:46.269 -05:00 [DBG] Adding idp claim with value: local
+2020-05-12 14:56:46.269 -05:00 [DBG] Adding amr claim with value: pwd
+2020-05-12 14:56:46.269 -05:00 [DBG] Adding auth_time claim with value: 1589313406
+2020-05-12 14:56:46.274 -05:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-05-12 14:56:53.781 -05:00 [DBG] CORS request made for path: /Account/Logout from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-05-12 14:56:53.791 -05:00 [INF] AuthenticationScheme: idsrv signed out.
+2020-05-12 14:57:09.999 -05:00 [INF] Application is shutting down...

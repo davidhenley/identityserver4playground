@@ -1,9 +1,13 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+﻿using System;
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-
+using System.Reflection;
+using IdentityServer4.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -12,9 +16,11 @@ namespace IdentityServer
     public class Startup
     {
         public IWebHostEnvironment Environment { get; }
+        public IConfiguration Configuration { get; }
 
-        public Startup(IWebHostEnvironment environment)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
+            Configuration = configuration;
             Environment = environment;
         }
 
@@ -22,10 +28,34 @@ namespace IdentityServer
         {
             services.AddControllersWithViews();
 
-            var builder = services.AddIdentityServer()
-                .AddInMemoryIdentityResources(Config.Ids)
-                .AddInMemoryApiResources(Config.Apis)
-                .AddInMemoryClients(Config.Clients);
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
+            var builder = services
+                .AddIdentityServer(o =>
+                {
+                    o.Events.RaiseErrorEvents = true;
+                    o.Events.RaiseInformationEvents = true;
+                    o.Events.RaiseFailureEvents = true;
+                    o.Events.RaiseSuccessEvents = true;
+                    o.UserInteraction.LoginUrl = "/Account/Login";
+                    o.UserInteraction.LogoutUrl = "/Account/Logout";
+                    o.Authentication = new AuthenticationOptions
+                    {
+                        CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
+                        CookieSlidingExpiration = true
+                    };
+                })
+                .AddConfigurationStore(o =>
+                {
+                    o.ConfigureDbContext = b => b.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                })
+                .AddOperationalStore(o =>
+                {
+                    o.ConfigureDbContext = b => b.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                    o.EnableTokenCleanup = true;
+                });
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
@@ -46,7 +76,7 @@ namespace IdentityServer
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-               endpoints.MapDefaultControllerRoute();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

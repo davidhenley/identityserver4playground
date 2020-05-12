@@ -196,7 +196,7 @@ namespace IdentityServer
 
         private ConsentViewModel CreateConsentViewModel(
             ConsentInputModel model, string returnUrl,
-            AuthorizationRequest request,
+            AuthorizationRequest _,
             Client client, Resources resources)
         {
             var vm = new ConsentViewModel

@@ -1,7 +1,0 @@
-/Users/home/Code/IdentityServer/obj/Debug/netcoreapp3.1/IdentityServer.csprojAssemblyReference.cache
-/Users/home/Code/IdentityServer/obj/Debug/netcoreapp3.1/IdentityServer.AssemblyInfoInputs.cache
-/Users/home/Code/IdentityServer/obj/Debug/netcoreapp3.1/IdentityServer.AssemblyInfo.cs
-/Users/home/Code/IdentityServer/obj/Debug/netcoreapp3.1/IdentityServer.csproj.CoreCompileInputs.cache
-/Users/home/Code/IdentityServer/obj/Debug/netcoreapp3.1/IdentityServer.MvcApplicationPartsAssemblyInfo.cache
-/Users/home/Code/IdentityServer/obj/Debug/netcoreapp3.1/IdentityServer.RazorAssemblyInfo.cache
-/Users/home/Code/IdentityServer/obj/Debug/netcoreapp3.1/IdentityServer.RazorAssemblyInfo.cs
